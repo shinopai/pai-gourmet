@@ -1,0 +1,21 @@
+<div class="auth-form__wrap">
+  <div class="wrap">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'auth-form' }) do |user| %>
+    <h2 class="auth-form__heading">ログイン</h2>
+    <hr class="auth-form__rule">
+
+    <div class="auth-form__item first">
+      <%= user.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'メールアドレス' %>
+    </div>
+
+    <div class="auth-form__item">
+      <%= user.password_field :password, autocomplete: "new-password", placeholder: 'パスワード' %>
+    </div>
+
+    <div class="auth-form__item last">
+      <%= user.submit "ログイン" %>
+    </div>
+    <%= render "devise/shared/links" %>
+    <% end %>
+  </div>
+</div>

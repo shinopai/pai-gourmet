@@ -1,0 +1,42 @@
+<header class="header">
+  <div class="wrap">
+    <div class="header__upper flex">
+      <h2>heading</h2>
+      <ul class="flex">
+        <li>
+          <%= link_to "食べログの特長と便利な使い方", '#' %>
+        </li>
+        <% if user_signed_in? %>
+        <li>
+          <%= link_to "予約確認", '#' %>
+        </li>
+        <li>
+          <%= link_to "行ったお店", '#' %>
+        </li>
+        <li>
+          <%= link_to "保存済み", '#' %>
+        </li>
+        <% else %>
+        <li>
+          <%= link_to "無料会員登録",new_user_registration_path %>
+        </li>
+        <li>
+          <%= link_to "ログイン", new_user_session_path %>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="header__lower flex">
+      <%= link_to root_path, class: 'contents' do %>
+      <h1>
+        <%= image_tag "logo_site_black.svg" %>
+      </h1>
+      <% end %>
+      <form action="" class="header__form">
+        <input type="text" name="area" id="" placeholder="エリア[例:東京、大阪]">
+        <input type="text" name="keyword" id="" placeholder="キーワード [例:焼肉、店名、個室]">
+        <input type="submit" value="検索">
+      </form>
+    </div>
+  </div>
+</header>

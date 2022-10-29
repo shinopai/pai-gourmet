@@ -1,0 +1,226 @@
+<%= render partial: 'shared/page_title', locals: { page_title: 'グルメ・レストラン予約サイト' } %>
+
+<div class="home">
+  <div class="home__header">
+    <div class="wrap">
+      <div class="home__header-nav flex">
+        <%= link_to root_path, class: 'contents' do %>
+        <h1>
+          <%= image_tag "logo_site_white.svg" %>
+        </h1>
+        <% end %>
+        <ul class="flex">
+          <li>
+            <%= link_to "食べログの特長と便利な使い方", '#' %>
+          </li>
+          <% if user_signed_in? %>
+          <li>
+            <%= link_to "予約確認", '#' %>
+          </li>
+          <li>
+            <%= link_to "行ったお店", '#' %>
+          </li>
+          <li>
+            <%= link_to "保存済み", '#' %>
+          </li>
+          <% else %>
+          <li>
+            <%= link_to "無料会員登録",new_user_registration_path %>
+          </li>
+          <li>
+            <%= link_to "ログイン", new_user_session_path %>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="home__header-contents">
+        <figure>
+          <%= image_tag "img_home01.png" %>
+        </figure>
+        <div class="flex">
+          <%= link_to image_tag('ico_home01.png'), '#' %>
+          <%= link_to image_tag('ico_home02.png'), '#' %>
+        </div>
+        <form action="" class="home__header-form flex">
+          <p>エリア・キーワードから探す</p>
+          <input type="text" name="area" id="" placeholder="エリア[例:東京、大阪]">
+          <input type="text" name="keyword" id="" placeholder="キーワード [例:焼肉、店名、個室]">
+          <input type="submit" value="検索">
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="home__main">
+    <div class="wrap">
+      <div class="home__main-inner flex">
+        <div class="before">
+          <!-- エリアから探す -->
+          <section class="home__main-area-sect">
+            <h2 class="home__main-heading">エリアから探す</h2>
+            <ul class="flex">
+              <li class="flex">
+                <%= image_tag "img_tokyo.jpg" %>
+                <%= link_to '#' do %>
+                東京<span>100件</span>
+                <% end %>
+              </li>
+              <li class="flex">
+                <%= image_tag "img_kanagawa.jpg" %>
+                <%= link_to '#' do %>
+                神奈川<span>100件</span>
+                <% end %>
+              </li>
+              <li class="flex">
+                <%= image_tag "img_aichi.jpg" %>
+                <%= link_to '#' do %>
+                愛知<span>100件</span>
+                <% end %>
+              </li>
+              <li class="flex">
+                <%= image_tag "img_osaka.jpg" %>
+                <%= link_to '#' do %>
+                大阪<span>100件</span>
+                <% end %>
+              </li>
+              <li class="flex">
+                <%= image_tag "img_kyoto.jpg" %>
+                <%= link_to '#' do %>
+                京都<span>100件</span>
+                <% end %>
+              </li>
+              <li class="flex">
+                <%= image_tag "img_fukuoka.jpg" %>
+                <%= link_to '#' do %>
+                福岡<span>100件</span>
+                <% end %>
+              </li>
+            </ul>
+            <div class="flex">
+              <dl class="before">
+                <dt class="first">北海道・東北</dt>
+                <dd class="flex">
+                  <%= link_to '北海道', '#' %>
+                  <%= link_to '青森', '#' %>
+                  <%= link_to '秋田', '#' %>
+                  <%= link_to '山形', '#' %>
+                  <%= link_to '岩手', '#' %>
+                  <%= link_to '宮城', '#' %>
+                  <%= link_to '福島', '#' %>
+                </dd>
+                <dt>中部</dt>
+                <dd class="flex">
+                  <%= link_to '愛知', '#' %>
+                  <%= link_to '岐阜', '#' %>
+                  <%= link_to '静岡', '#' %>
+                  <%= link_to '三重', '#' %>
+                  <%= link_to '新潟', '#' %>
+                  <%= link_to '山梨', '#' %>
+                  <%= link_to '長野', '#' %>
+                  <%= link_to '石川', '#' %>
+                  <%= link_to '富山', '#' %>
+                  <%= link_to '福井', '#' %>
+                </dd>
+                <dt>中国・四国</dt>
+                <dd class="flex">
+                  <%= link_to '岡山', '#' %>
+                  <%= link_to '広島', '#' %>
+                  <%= link_to '鳥取', '#' %>
+                  <%= link_to '島根', '#' %>
+                  <%= link_to '山口', '#' %>
+                  <%= link_to '香川', '#' %>
+                  <%= link_to '徳島', '#' %>
+                  <%= link_to '愛媛', '#' %>
+                  <%= link_to '高知', '#' %>
+                </dd>
+              </dl>
+              <dl class="after">
+                <dt class="first">関東</dt>
+                <dd class="flex">
+                  <%= link_to '東京', '#' %>
+                  <%= link_to '神奈川', '#' %>
+                  <%= link_to '埼玉', '#' %>
+                  <%= link_to '千葉', '#' %>
+                  <%= link_to '栃木', '#' %>
+                  <%= link_to '茨城', '#' %>
+                  <%= link_to '群馬', '#' %>
+                </dd>
+                <dt>関西</dt>
+                <dd class="flex">
+                  <%= link_to '大阪', '#' %>
+                  <%= link_to '兵庫', '#' %>
+                  <%= link_to '京都', '#' %>
+                  <%= link_to '滋賀', '#' %>
+                  <%= link_to '奈良', '#' %>
+                  <%= link_to '和歌山', '#' %>
+                </dd>
+                <dt>九州・沖縄</dt>
+                <dd class="flex">
+                  <%= link_to '福岡', '#' %>
+                  <%= link_to '佐賀', '#' %>
+                  <%= link_to '長崎', '#' %>
+                  <%= link_to '熊本', '#' %>
+                  <%= link_to '大分', '#' %>
+                  <%= link_to '宮崎', '#' %>
+                  <%= link_to '鹿児島', '#' %>
+                  <%= link_to '沖縄', '#' %>
+                </dd>
+              </dl>
+            </div>
+            <%= link_to '全国のお店', all_restaurants_path %>
+          </section>
+
+          <!-- 料理ジャンルから探す -->
+          <section class="home__main-genre-sect">
+            <h2 class="home__main-heading">料理ジャンルから探す</h2>
+            <div class="flex">
+              <%= link_to '#', class: 'contents' do %>
+              <div class="yakiniku">
+                <div class="overlay"></div>
+                <p>焼肉<br><span>100件</span></p>
+              </div>
+              <% end %>
+              <%= link_to '#', class: 'contents' do %>
+              <div class="sushi">
+                <div class="overlay"></div>
+                <p>寿司<br><span>100件</span></p>
+              </div>
+              <% end %>
+              <%= link_to '#', class: 'contents' do %>
+              <div class="izakaya">
+                <div class="overlay"></div>
+                <p>居酒屋<br><span>100件</span></p>
+              </div>
+              <% end %>
+              <%= link_to '#', class: 'contents' do %>
+              <div class="italian">
+                <div class="overlay"></div>
+                <p>イタリアン<br><span>100件</span></p>
+              </div>
+              <% end %>
+              <%= link_to '#', class: 'contents' do %>
+              <div class="ramen">
+                <div class="overlay"></div>
+                <p>ラーメン<br><span>100件</span></p>
+              </div>
+              <% end %>
+              <%= link_to '#', class: 'contents' do %>
+              <div class="cafe">
+                <div class="overlay"></div>
+                <p>カフェ<br><span>100件</span></p>
+              </div>
+              <% end %>
+            </div>
+            <ul class="flex">
+              <% @genres.each do |genre| %>
+              <li>
+                <%= link_to genre.name, '#' %>
+              </li>
+              <% end %>
+            </ul>
+          </section>
+        </div>
+        <div class="after"></div>
+      </div>
+    </div>
+  </div>
+</div>

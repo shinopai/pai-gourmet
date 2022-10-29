@@ -97,3 +97,12 @@ gem 'rails-i18n'
 
 # make rails console simple to see
 gem 'pry-rails'
+
+# build js
+gem 'jsbundling-rails'
+
+# build css
+gem 'cssbundling-rails'
+
+# validate date format
+gem 'date_validator'

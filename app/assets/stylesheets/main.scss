@@ -1,0 +1,298 @@
+/* home */
+.home {
+  &__header {
+    background: url(bg_home01.png) no-repeat;
+    background-size: cover;
+    background-position: top;
+    &-nav {
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 10px;
+      h1 {
+        width: 132px;
+      }
+      ul {
+        column-gap: 20px;
+        li {
+          a {
+            color: #fff;
+            @include fs-13;
+          }
+        }
+      }
+    }
+    &-contents {
+      position: relative;
+      div {
+        position: absolute;
+        bottom: 100px;
+        left: 160px;
+        column-gap: 20px;
+      }
+    }
+    &-form {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 1px 1px 3px 0 rgb(0 0 0 / 10%);
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      bottom: -45px;
+      width: 100%;
+      p {
+        @include fs-17;
+        font-weight: 600;
+        margin: 0;
+        margin-right: 10px;
+      }
+      input[type="text"] {
+        width: 35%;
+        @include fs-12;
+        padding: 10px;
+      }
+      input[type="submit"] {
+        width: 9%;
+        @include fs-16;
+        padding: 9px;
+        color: #fff;
+        font-weight: 600;
+        background-image: linear-gradient(112deg, #fa0, #f28c00);
+        border: none;
+      }
+    }
+  }
+  &__main {
+    padding: min(10%, 100px) 0;
+    &-inner {
+      .before {
+        width: 70%;
+      }
+      .after {
+        width: 30%;
+      }
+    }
+    &-area-sect {
+      ul {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        row-gap: 30px;
+        li {
+          width: 30%;
+          align-items: center;
+          column-gap: 20px;
+          border: solid 1px #e1e1e1;
+          box-shadow: 0 1px 2px 0 rgb(0 0 0 / 16%);
+          border-radius: 5px;
+          img {
+            width: 70px;
+            border-radius: 5px 0 0 5px;
+            margin: -1px;
+          }
+          a {
+            @include fs-20;
+            font-weight: 600;
+            position: relative;
+            span {
+              margin-left: 10px;
+            }
+            &:hover {
+              color: #ff9600;
+              &::after {
+                content: "";
+                display: inline-block;
+                width: 100%;
+                height: 1px;
+                background-color: #ff9600;
+                position: absolute;
+                bottom: 5px;
+                left: 0;
+              }
+            }
+          }
+        }
+      }
+      div.flex {
+        margin-top: 30px;
+        dl {
+          &.before {
+            width: 60%;
+          }
+          &.after {
+            width: 40%;
+          }
+        }
+        dt {
+          @include fs-13;
+          color: #595960;
+          font-weight: 600;
+          &:not(.first) {
+            margin-top: 10px;
+          }
+        }
+        dd {
+          margin-left: 0;
+          margin-top: 3px;
+          column-gap: 15px;
+          a {
+            @include fs-13;
+            color: #0066cc;
+            &:hover {
+              color: #ff9600;
+            }
+          }
+        }
+        & + a {
+          margin-top: 15px;
+          @include fs-13;
+          color: #0066cc;
+          position: relative;
+          padding-left: 10px;
+          &:hover {
+            color: #ff9600;
+            text-decoration: underline;
+          }
+          &::before {
+            content: "";
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 6px 0 6px 8px;
+            border-color: transparent transparent transparent #ff9500;
+            position: absolute;
+            left: 0;
+            top: 2px;
+          }
+        }
+      }
+    }
+    &-genre-sect {
+      margin-top: 50px;
+      div.flex {
+        justify-content: space-between;
+        div {
+          width: 15%;
+          display: flex;
+          justify-content: center;
+          align-items: flex-end;
+          position: relative;
+          aspect-ratio: 1/1;
+          &.yakiniku {
+            @include set-bg-image("bg_yakiniku.jpg");
+          }
+          &.sushi {
+            @include set-bg-image("bg_sushi.jpg");
+          }
+          &.izakaya {
+            @include set-bg-image("bg_izakaya.jpg");
+          }
+          &.italian {
+            @include set-bg-image("bg_italian.jpg");
+          }
+          &.ramen {
+            @include set-bg-image("bg_ramen.jpg");
+          }
+          &.cafe {
+            @include set-bg-image("bg_cafe.jpg");
+          }
+          p {
+            text-align: center;
+            color: #fff;
+            @include fs-16;
+            font-weight: 600;
+            margin: 0;
+            margin-bottom: 5px;
+            line-height: 1;
+            z-index: 1;
+          }
+          div.overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.3);
+          }
+        }
+      }
+      ul.flex {
+        flex-wrap: wrap;
+        margin-top: 30px;
+        gap: 15px;
+        li {
+          border: 1px solid #e1e1e1;
+          padding: 5px 10px;
+          @include fs-12;
+          border-radius: 3px;
+          a {
+            color: #595960;
+          }
+          &:hover {
+            border-color: #ff9500;
+            a {
+              color: #ff9500;
+            }
+          }
+        }
+      }
+    }
+    &-heading {
+      @include fs-22;
+    }
+  }
+}
+
+/* auth form */
+.auth-form {
+  background-color: #fff;
+  width: 60%;
+  margin: 0 auto;
+  padding: 20px;
+  &__wrap {
+    background-color: #faf8f5;
+    padding: min(5%, 50px);
+  }
+  &__heading {
+    @include fs-18;
+    color: #463f2d;
+    font-weight: 600;
+    text-align: center;
+  }
+  &__item {
+    margin-top: 10px;
+    text-align: center;
+    &.first {
+      margin-top: 25px;
+    }
+    &.last {
+      margin-top: 25px;
+    }
+    input {
+      width: 70%;
+      @include fs-16;
+      padding: 5px;
+      &[type="submit"] {
+        background-color: #82ad24;
+        border: none;
+        border-radius: 3px;
+        color: #fff;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      &[type="file"] {
+        padding: 0;
+      }
+    }
+  }
+  &__link {
+    @include fs-14;
+    margin-top: 20px;
+    text-align: center;
+    &:hover {
+      text-decoration: underline;
+    }
+    &.secondary {
+      margin-top: 0;
+    }
+  }
+}
