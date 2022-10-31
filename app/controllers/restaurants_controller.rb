@@ -4,4 +4,10 @@ class RestaurantsController < ApplicationController
 
     render :all
   end
+
+  def show_detail
+    @restaurant = Restaurant.find(params[:id])
+
+    render :show
+  end
 end

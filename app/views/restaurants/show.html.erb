@@ -1,0 +1,49 @@
+<%= render partial: 'shared/page_title', locals: { page_title: @restaurant.name } %>
+
+<div class="resto-detail">
+  <div class="wrap-sm">
+    <h2 class="resto-detail__heading"><%= @restaurant.name %></h2>
+    <div class="basic-rule"></div>
+    <p class="resto-detail__data"><span>エリア:</span>&nbsp;<%= @restaurant.area.name %> | <span>ジャンル:</span>&nbsp;<%= @restaurant.genre.name %></p>
+    <div class="resto-detail__contents flex">
+      <div class="before">
+        <% if @restaurant.image? %>
+        <%= image_tag @restaurant.image.url %>
+        <% end %>
+        <p><%= @restaurant.remarks %></p>
+      </div>
+      <div class="after">
+        <p><%= @restaurant.phone %></p>
+        <h3>店舗情報（詳細）</h3>
+        <table>
+          <tbody>
+            <tr>
+              <th>店名</th>
+              <td><%= @restaurant.name %></td>
+            </tr>
+            <tr>
+              <th>ジャンル</th>
+              <td><%= @restaurant.genre.name %></td>
+            </tr>
+            <tr>
+              <th>エリア</th>
+              <td><%= @restaurant.area.name %></td>
+            </tr>
+            <tr>
+              <th>オープン日</th>
+              <td><%= @restaurant.opening_date %></td>
+            </tr>
+            <tr>
+              <th>電話番号</th>
+              <td><%= @restaurant.phone %></td>
+            </tr>
+            <tr>
+              <th>備考</th>
+              <td><%= @restaurant.remarks %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

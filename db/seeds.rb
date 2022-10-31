@@ -27,7 +27,7 @@ images = [
   Restaurant.create!(
     name: Faker::Name.name,
     opening_date: Faker::Date.between(from: '1900-01-01', to: Date.today),
-    phone: Faker::PhoneNumber,
+    phone: Faker::PhoneNumber.phone_number,
     remarks: Faker::Lorem.paragraph,
     image: File.open("./public/images/#{image_path}"),
     area_id: rand(1..Area.count),

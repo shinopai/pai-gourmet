@@ -296,3 +296,81 @@
     }
   }
 }
+
+/* restaurant detail page */
+.resto-detail {
+  padding: min(5%, 50px) 0;
+  &__heading {
+    @include fs-22;
+    font-weight: 600;
+    color: #13131e;
+    margin-bottom: 10px;
+  }
+  &__data {
+    @include fs-11;
+    color: #463f2d;
+    span {
+      font-weight: 700;
+    }
+  }
+  &__contents {
+    margin-top: 30px;
+    column-gap: 20px;
+    div {
+      &.before {
+        width: 60%;
+        img {
+          height: 370px;
+          object-fit: cover;
+        }
+        p {
+          @include fs-20;
+          font-weight: 700;
+          color: #13131e;
+        }
+      }
+      &.after {
+        width: 40%;
+        border-top: 1px solid #eeece4;
+        padding-top: 20px;
+        p {
+          @include fs-25;
+          margin-top: 0;
+          color: #13131e;
+          position: relative;
+          padding-left: 25px;
+          &::before {
+            content: "";
+            background: url("ico_phone.png") no-repeat;
+            background-size: contain;
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            left: 0;
+            top: calc(50% - 20px / 2);
+          }
+        }
+        h3 {
+          @include fs-16;
+          color: #13131e;
+          border-left: 4px solid #ff9500;
+          padding-left: 10px;
+        }
+        table {
+          th {
+            @include fs-13;
+            width: 30%;
+            background-color: #faf8f5;
+            padding: 10px;
+          }
+          td {
+            @include fs-13;
+            width: 70%;
+            padding-left: 10px;
+          }
+        }
+      }
+    }
+  }
+}

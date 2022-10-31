@@ -5,7 +5,7 @@
     <h2 class="list__heading">全国のお店</h2>
     <div class="list__contents">
       <% @restaurants.each do |restaurant| %>
-      <%= link_to '#', class: 'contents' do %>
+      <%= link_to show_restaurant_path(restaurant), class: 'contents', target: :blank do %>
       <div class="list__item flex">
         <div class="list__img">
           <% if restaurant.image? %>
@@ -17,7 +17,7 @@
           <p>
             <%= restaurant.area.name %>&nbsp;/&nbsp;<%= restaurant.genre.name %>
           </p>
-          <hr>
+          <div class="basic-rule"></div>
           <p>
             <%= restaurant.remarks %>
           </p>

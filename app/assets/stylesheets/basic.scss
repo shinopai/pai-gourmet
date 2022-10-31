@@ -33,6 +33,10 @@ figure {
 option {
   font-size: 1em;
 }
+dt,
+dd {
+  font-size: 1em;
+}
 
 /* basic class */
 .flex {
@@ -48,6 +52,11 @@ option {
 .wrap-sm {
   width: min(95%, 980px);
   margin: 0 auto;
+}
+.basic-rule {
+  width: 100%;
+  height: 1px;
+  background-color: #eeece4;
 }
 
 /* breakpoints */
@@ -116,6 +125,11 @@ $breakpoints: (
   font-size: clamp(2rem, 1.927rem + 0.36vw, 2.2rem);
 }
 
+/* font size 25px */
+@mixin fs-25 {
+  font-size: clamp(2.3rem, 2.227rem + 0.36vw, 2.5rem);
+}
+
 /* font size 26px */
 @mixin fs-26 {
   font-size: clamp(2.4rem, 2.327rem + 0.36vw, 2.6rem);
@@ -124,6 +138,7 @@ $breakpoints: (
 /* header */
 .header {
   border-top: 2px solid #ff9500;
+  box-shadow: 0 2px 2px -1px #eeece4;
   &__upper {
     justify-content: space-between;
     align-items: center;

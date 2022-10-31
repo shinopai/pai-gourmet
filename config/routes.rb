@@ -15,4 +15,7 @@ Rails.application.routes.draw do
 
   # all restaurants list
   get '/all', to: 'restaurants#show_all', as: :all_restaurants
+
+  # restaurant detail page
+  get '/restaurant/:id', to: 'restaurants#show_detail', as: :show_restaurant
 end
