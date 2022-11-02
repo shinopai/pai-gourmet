@@ -42,6 +42,10 @@ dd {
 .flex {
   display: flex;
 }
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
 .contents {
   display: contents;
 }
@@ -133,6 +137,26 @@ $breakpoints: (
 /* font size 26px */
 @mixin fs-26 {
   font-size: clamp(2.4rem, 2.327rem + 0.36vw, 2.6rem);
+}
+
+/* flash message */
+.notice-msg {
+  background-color: #92e76b;
+  color: #fff;
+  @include fs-14;
+  font-weight: 700;
+  padding: 10px;
+  text-align: center;
+  margin: 0;
+}
+.alert-msg {
+  background-color: #df8f40;
+  color: #fff;
+  @include fs-14;
+  font-weight: 700;
+  padding: 10px;
+  text-align: center;
+  margin: 0;
 }
 
 /* header */
@@ -236,6 +260,7 @@ $breakpoints: (
   &__item {
     margin-bottom: 25px;
     justify-content: space-between;
+    border-top: 1px solid #eeece4;
   }
   &__img {
     width: 220px;
@@ -247,6 +272,14 @@ $breakpoints: (
   }
   &__mass {
     width: 75%;
+    span {
+      @include fs-26;
+      float: right;
+      cursor: pointer;
+      &.done {
+        color: #f0d019;
+      }
+    }
     h3 {
       @include fs-20;
       font-weight: 600;

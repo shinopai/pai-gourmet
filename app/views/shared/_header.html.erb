@@ -1,7 +1,7 @@
 <header class="header">
   <div class="wrap">
     <div class="header__upper flex">
-      <h2>heading</h2>
+      <h2><%= @heading_word %></h2>
       <ul class="flex">
         <li>
           <%= link_to "食べログの特長と便利な使い方", '#' %>
@@ -15,6 +15,9 @@
         </li>
         <li>
           <%= link_to "保存済み", '#' %>
+        </li>
+        <li>
+          <%= link_to "ログアウト", destroy_user_session_path %>
         </li>
         <% else %>
         <li>
@@ -32,11 +35,11 @@
         <%= image_tag "logo_site_black.svg" %>
       </h1>
       <% end %>
-      <form action="" class="header__form">
-        <input type="text" name="area" id="" placeholder="エリア[例:東京、大阪]">
-        <input type="text" name="keyword" id="" placeholder="キーワード [例:焼肉、店名、個室]">
-        <input type="submit" value="検索">
-      </form>
+      <%= search_form_for @q, url: search_restaurant_path, method: :get, class: 'header__form' do |search| %>
+      <%= search.text_field :area_id_cont, placeholder: 'エリア[例:東京、大阪]' %>
+      <%= search.text_field :name_or_remarks_gt, placeholder: 'キーワード [例:焼肉、店名、個室]' %>
+      <%= search.submit '検索' %>
+      <% end %>
     </div>
   </div>
 </header>

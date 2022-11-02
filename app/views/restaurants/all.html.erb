@@ -13,6 +13,9 @@
           <% end %>
         </div>
         <div class="list__mass">
+          <%= button_to keep_restaurant_path(@current_user.id, restaurant.id), method: :post, class: 'contents' do %>
+          <span title="このお店を保存する"><i class="far fa-bookmark fa-border"></i></span>
+          <% end %>
           <h3><%= restaurant.name %></h3>
           <p>
             <%= restaurant.area.name %>&nbsp;/&nbsp;<%= restaurant.genre.name %>

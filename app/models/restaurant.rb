@@ -3,6 +3,8 @@ class Restaurant < ApplicationRecord
   belongs_to :area
   belongs_to :genre
   mount_uploader :image, ImageUploader
+  has_many :keeps
+  has_many :users, through: :keeps
 
   # constant
   VALID_PHONE_NUMBER_REGEX = /\A0(\d{1}[-(]?\d{4}|\d{2}[-(]?\d{3}|\d{3}[-(]?\d{2}|\d{4}[-(]?\d{1})[-)]?\d{4}\z|\A0[5789]0[-]?\d{4}[-]?\d{4}\z/

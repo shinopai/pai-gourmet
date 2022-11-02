@@ -9,12 +9,15 @@
 
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+
+  <!-- font awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
 </head>
 
 <body>
   <!-- header -->
   <% unless controller_name == 'home' %>
-  <%= render 'shared/header' %>
+  <%= render 'shared/header', locals: { heading_word: @heading_word } %>
   <% end %>
 
   <!-- flash message -->

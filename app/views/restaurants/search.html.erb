@@ -1,0 +1,31 @@
+<%= render partial: 'shared/page_title', locals: { page_title: '検索結果' } %>
+
+<div class="list">
+  <div class="wrap-sm">
+    <h2 class="list__heading">全国のお店</h2>
+    <div class="list__contents">
+      <% @restaurants.each do |restaurant| %>
+      <%= link_to show_restaurant_path(restaurant), class: 'contents', target: :blank do %>
+      <div class="list__item flex">
+        <div class="list__img">
+          <% if restaurant.image? %>
+          <%= image_tag restaurant.image.url %>
+          <% end %>
+        </div>
+        <div class="list__mass">
+          <h3><%= restaurant.name %></h3>
+          <p>
+            <%= restaurant.area.name %>&nbsp;/&nbsp;<%= restaurant.genre.name %>
+          </p>
+          <div class="basic-rule"></div>
+          <p>
+            <%= restaurant.remarks %>
+          </p>
+        </div>
+      </div>
+      <% end %>
+      <% end %>
+      <%= paginate @restaurants %>
+    </div>
+  </div>
+</div>

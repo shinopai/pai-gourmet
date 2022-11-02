@@ -23,6 +23,9 @@
           <li>
             <%= link_to "保存済み", '#' %>
           </li>
+          <li>
+            <%= link_to "ログアウト", destroy_user_session_path %>
+          </li>
           <% else %>
           <li>
             <%= link_to "無料会員登録",new_user_registration_path %>
@@ -38,15 +41,15 @@
           <%= image_tag "img_home01.png" %>
         </figure>
         <div class="flex">
-          <%= link_to image_tag('ico_home01.png'), '#' %>
-          <%= link_to image_tag('ico_home02.png'), '#' %>
+          <%= link_to image_tag('ico_home01.png'), 'https://itunes.apple.com/jp/app/id763377066?mt=8', target: 'blank' %>
+          <%= link_to image_tag('ico_home02.png'), 'https://play.google.com/store/apps/details?id=com.kakaku.tabelog', target: 'blank' %>
         </div>
-        <form action="" class="home__header-form flex">
-          <p>エリア・キーワードから探す</p>
-          <input type="text" name="area" id="" placeholder="エリア[例:東京、大阪]">
-          <input type="text" name="keyword" id="" placeholder="キーワード [例:焼肉、店名、個室]">
-          <input type="submit" value="検索">
-        </form>
+        <%= search_form_for @q, url: search_restaurant_path, method: :get, class: 'home__header-form flex' do |search| %>
+        <p>エリア・キーワードから探す</p>
+        <%= search.text_field :area_id_cont, placeholder: 'エリア[例:東京、大阪]' %>
+        <%= search.text_field :name_or_remarks_gt, placeholder: 'キーワード [例:焼肉、店名、個室]' %>
+        <%= search.submit '検索' %>
+        <% end %>
       </div>
     </div>
   </div>
@@ -60,38 +63,38 @@
             <ul class="flex">
               <li class="flex">
                 <%= image_tag "img_tokyo.jpg" %>
-                <%= link_to '#' do %>
-                東京<span>100件</span>
+                <%= link_to all_restaurants_area_path( get_area_id('東京')) do %>
+                東京<span><%= number_with_delimiter(number_of_resto_by_area(get_area_id('東京'))) %>件</span>
                 <% end %>
               </li>
               <li class="flex">
                 <%= image_tag "img_kanagawa.jpg" %>
-                <%= link_to '#' do %>
-                神奈川<span>100件</span>
+                <%= link_to all_restaurants_area_path( get_area_id('神奈川')) do %>
+                神奈川<span><%= number_with_delimiter(number_of_resto_by_area(get_area_id('神奈川'))) %>件</span>
                 <% end %>
               </li>
               <li class="flex">
                 <%= image_tag "img_aichi.jpg" %>
-                <%= link_to '#' do %>
-                愛知<span>100件</span>
+                <%= link_to all_restaurants_area_path( get_area_id('愛知')) do %>
+                愛知<span><%= number_with_delimiter(number_of_resto_by_area(get_area_id('愛知'))) %>件</span>
                 <% end %>
               </li>
               <li class="flex">
                 <%= image_tag "img_osaka.jpg" %>
-                <%= link_to '#' do %>
-                大阪<span>100件</span>
+                <%= link_to all_restaurants_area_path( get_area_id('大阪')) do %>
+                大阪<span><%= number_with_delimiter(number_of_resto_by_area(get_area_id('大阪'))) %>件</span>
                 <% end %>
               </li>
               <li class="flex">
                 <%= image_tag "img_kyoto.jpg" %>
-                <%= link_to '#' do %>
-                京都<span>100件</span>
+                <%= link_to all_restaurants_area_path( get_area_id('京都')) do %>
+                京都<span><%= number_with_delimiter(number_of_resto_by_area(get_area_id('京都'))) %>件</span>
                 <% end %>
               </li>
               <li class="flex">
                 <%= image_tag "img_fukuoka.jpg" %>
-                <%= link_to '#' do %>
-                福岡<span>100件</span>
+                <%= link_to all_restaurants_area_path( get_area_id('福岡')) do %>
+                福岡<span><%= number_with_delimiter(number_of_resto_by_area(get_area_id('福岡'))) %>件</span>
                 <% end %>
               </li>
             </ul>
@@ -99,70 +102,70 @@
               <dl class="before">
                 <dt class="first">北海道・東北</dt>
                 <dd class="flex">
-                  <%= link_to '北海道', '#' %>
-                  <%= link_to '青森', '#' %>
-                  <%= link_to '秋田', '#' %>
-                  <%= link_to '山形', '#' %>
-                  <%= link_to '岩手', '#' %>
-                  <%= link_to '宮城', '#' %>
-                  <%= link_to '福島', '#' %>
+                  <%= link_to '北海道', all_restaurants_area_path( get_area_id('北海道')) %>
+                  <%= link_to '青森', all_restaurants_area_path( get_area_id('青森')) %>
+                  <%= link_to '秋田', all_restaurants_area_path( get_area_id('秋田')) %>
+                  <%= link_to '山形', all_restaurants_area_path( get_area_id('山形')) %>
+                  <%= link_to '岩手', all_restaurants_area_path( get_area_id('岩手')) %>
+                  <%= link_to '宮城', all_restaurants_area_path( get_area_id('宮城')) %>
+                  <%= link_to '福島', all_restaurants_area_path( get_area_id('福島')) %>
                 </dd>
                 <dt>中部</dt>
                 <dd class="flex">
-                  <%= link_to '愛知', '#' %>
-                  <%= link_to '岐阜', '#' %>
-                  <%= link_to '静岡', '#' %>
-                  <%= link_to '三重', '#' %>
-                  <%= link_to '新潟', '#' %>
-                  <%= link_to '山梨', '#' %>
-                  <%= link_to '長野', '#' %>
-                  <%= link_to '石川', '#' %>
-                  <%= link_to '富山', '#' %>
-                  <%= link_to '福井', '#' %>
+                  <%= link_to '愛知', all_restaurants_area_path( get_area_id('愛知')) %>
+                  <%= link_to '岐阜', all_restaurants_area_path( get_area_id('岐阜')) %>
+                  <%= link_to '静岡', all_restaurants_area_path( get_area_id('静岡')) %>
+                  <%= link_to '三重', all_restaurants_area_path( get_area_id('三重')) %>
+                  <%= link_to '新潟', all_restaurants_area_path( get_area_id('新潟')) %>
+                  <%= link_to '山梨', all_restaurants_area_path( get_area_id('山梨')) %>
+                  <%= link_to '長野', all_restaurants_area_path( get_area_id('長野')) %>
+                  <%= link_to '石川', all_restaurants_area_path( get_area_id('石川')) %>
+                  <%= link_to '富山', all_restaurants_area_path( get_area_id('富山')) %>
+                  <%= link_to '福井', all_restaurants_area_path( get_area_id('福井')) %>
                 </dd>
                 <dt>中国・四国</dt>
                 <dd class="flex">
-                  <%= link_to '岡山', '#' %>
-                  <%= link_to '広島', '#' %>
-                  <%= link_to '鳥取', '#' %>
-                  <%= link_to '島根', '#' %>
-                  <%= link_to '山口', '#' %>
-                  <%= link_to '香川', '#' %>
-                  <%= link_to '徳島', '#' %>
-                  <%= link_to '愛媛', '#' %>
-                  <%= link_to '高知', '#' %>
+                  <%= link_to '岡山', all_restaurants_area_path( get_area_id('岡山')) %>
+                  <%= link_to '広島', all_restaurants_area_path( get_area_id('広島')) %>
+                  <%= link_to '鳥取', all_restaurants_area_path( get_area_id('鳥取')) %>
+                  <%= link_to '島根', all_restaurants_area_path( get_area_id('島根')) %>
+                  <%= link_to '山口', all_restaurants_area_path( get_area_id('山口')) %>
+                  <%= link_to '香川', all_restaurants_area_path( get_area_id('香川')) %>
+                  <%= link_to '徳島', all_restaurants_area_path( get_area_id('徳島')) %>
+                  <%= link_to '愛媛', all_restaurants_area_path( get_area_id('愛媛')) %>
+                  <%= link_to '高知', all_restaurants_area_path( get_area_id('高知')) %>
                 </dd>
               </dl>
               <dl class="after">
                 <dt class="first">関東</dt>
                 <dd class="flex">
-                  <%= link_to '東京', '#' %>
-                  <%= link_to '神奈川', '#' %>
-                  <%= link_to '埼玉', '#' %>
-                  <%= link_to '千葉', '#' %>
-                  <%= link_to '栃木', '#' %>
-                  <%= link_to '茨城', '#' %>
-                  <%= link_to '群馬', '#' %>
+                  <%= link_to '東京', all_restaurants_area_path( get_area_id('東京')) %>
+                  <%= link_to '神奈川', all_restaurants_area_path( get_area_id('神奈川')) %>
+                  <%= link_to '埼玉', all_restaurants_area_path( get_area_id('埼玉')) %>
+                  <%= link_to '千葉', all_restaurants_area_path( get_area_id('千葉')) %>
+                  <%= link_to '栃木', all_restaurants_area_path( get_area_id('栃木')) %>
+                  <%= link_to '茨城', all_restaurants_area_path( get_area_id('茨城')) %>
+                  <%= link_to '群馬', all_restaurants_area_path( get_area_id('群馬')) %>
                 </dd>
                 <dt>関西</dt>
                 <dd class="flex">
-                  <%= link_to '大阪', '#' %>
-                  <%= link_to '兵庫', '#' %>
-                  <%= link_to '京都', '#' %>
-                  <%= link_to '滋賀', '#' %>
-                  <%= link_to '奈良', '#' %>
-                  <%= link_to '和歌山', '#' %>
+                  <%= link_to '大阪', all_restaurants_area_path( get_area_id('大阪')) %>
+                  <%= link_to '兵庫', all_restaurants_area_path( get_area_id('兵庫')) %>
+                  <%= link_to '京都', all_restaurants_area_path( get_area_id('京都')) %>
+                  <%= link_to '滋賀', all_restaurants_area_path( get_area_id('滋賀')) %>
+                  <%= link_to '奈良', all_restaurants_area_path( get_area_id('奈良')) %>
+                  <%= link_to '和歌山', all_restaurants_area_path( get_area_id('和歌山')) %>
                 </dd>
                 <dt>九州・沖縄</dt>
                 <dd class="flex">
-                  <%= link_to '福岡', '#' %>
-                  <%= link_to '佐賀', '#' %>
-                  <%= link_to '長崎', '#' %>
-                  <%= link_to '熊本', '#' %>
-                  <%= link_to '大分', '#' %>
-                  <%= link_to '宮崎', '#' %>
-                  <%= link_to '鹿児島', '#' %>
-                  <%= link_to '沖縄', '#' %>
+                  <%= link_to '福岡', all_restaurants_area_path( get_area_id('福岡')) %>
+                  <%= link_to '佐賀', all_restaurants_area_path( get_area_id('佐賀')) %>
+                  <%= link_to '長崎', all_restaurants_area_path( get_area_id('長崎')) %>
+                  <%= link_to '熊本', all_restaurants_area_path( get_area_id('熊本')) %>
+                  <%= link_to '大分', all_restaurants_area_path( get_area_id('大分')) %>
+                  <%= link_to '宮崎', all_restaurants_area_path( get_area_id('宮崎')) %>
+                  <%= link_to '鹿児島', all_restaurants_area_path( get_area_id('鹿児島')) %>
+                  <%= link_to '沖縄', all_restaurants_area_path( get_area_id('沖縄')) %>
                 </dd>
               </dl>
             </div>
@@ -173,53 +176,99 @@
           <section class="home__main-genre-sect">
             <h2 class="home__main-heading">料理ジャンルから探す</h2>
             <div class="flex">
-              <%= link_to '#', class: 'contents' do %>
+              <%= link_to all_restaurants_genre_path( get_genre_id('焼肉')), class: 'contents' do %>
               <div class="yakiniku">
                 <div class="overlay"></div>
-                <p>焼肉<br><span>100件</span></p>
+                <p>焼肉<br><span><%= number_with_delimiter(number_of_resto_by_genre(get_genre_id('焼肉'))) %>件</span></p>
               </div>
               <% end %>
-              <%= link_to '#', class: 'contents' do %>
+              <%= link_to all_restaurants_genre_path( get_genre_id('寿司')), class: 'contents' do %>
               <div class="sushi">
                 <div class="overlay"></div>
-                <p>寿司<br><span>100件</span></p>
+                <p>寿司<br><span><%= number_with_delimiter(number_of_resto_by_genre(get_genre_id('寿司'))) %>件</span></p>
               </div>
               <% end %>
-              <%= link_to '#', class: 'contents' do %>
+              <%= link_to all_restaurants_genre_path( get_genre_id('居酒屋')), class: 'contents' do %>
               <div class="izakaya">
                 <div class="overlay"></div>
-                <p>居酒屋<br><span>100件</span></p>
+                <p>居酒屋<br><span><%= number_with_delimiter(number_of_resto_by_genre(get_genre_id('居酒屋'))) %>件</span></p>
               </div>
               <% end %>
-              <%= link_to '#', class: 'contents' do %>
+              <%= link_to all_restaurants_genre_path( get_genre_id('イタリアン')), class: 'contents' do %>
               <div class="italian">
                 <div class="overlay"></div>
-                <p>イタリアン<br><span>100件</span></p>
+                <p>イタリアン<br><span><%= number_with_delimiter(number_of_resto_by_genre(get_genre_id('イタリアン'))) %>件</span></p>
               </div>
               <% end %>
-              <%= link_to '#', class: 'contents' do %>
+              <%= link_to all_restaurants_genre_path( get_genre_id('ラーメン')), class: 'contents' do %>
               <div class="ramen">
                 <div class="overlay"></div>
-                <p>ラーメン<br><span>100件</span></p>
+                <p>ラーメン<br><span><%= number_with_delimiter(number_of_resto_by_genre(get_genre_id('ラーメン'))) %>件</span></p>
               </div>
               <% end %>
-              <%= link_to '#', class: 'contents' do %>
+              <%= link_to all_restaurants_genre_path( get_genre_id('カフェ')), class: 'contents' do %>
               <div class="cafe">
                 <div class="overlay"></div>
-                <p>カフェ<br><span>100件</span></p>
+                <p>カフェ<br><span><%= number_with_delimiter(number_of_resto_by_genre(get_genre_id('カフェ'))) %>件</span></p>
               </div>
               <% end %>
             </div>
             <ul class="flex">
               <% @genres.each do |genre| %>
               <li>
-                <%= link_to genre.name, '#' %>
+                <%= link_to genre.name, all_restaurants_genre_path( get_genre_id(genre.name)) %>
               </li>
               <% end %>
             </ul>
           </section>
         </div>
-        <div class="after"></div>
+        <div class="after">
+          <div class="home__main-data-sect flex">
+            <div class="home__main-data first flex-col">
+              <p><%= number_with_delimiter(@total_restaurants) %></p>
+              <p>店舗</p>
+            </div>
+            <div class="home__main-data flex-col">
+              <p>10</p>
+              <p>口コミ</p>
+            </div>
+          </div>
+          <div class="home__main-contents-sect">
+            <h3>食べログおすすめコンテンツ</h3>
+            <div class="home__main-contents">
+              <%= link_to '#', class: 'contents' do %>
+              <div class="home__main-contents-item flex">
+                <div>
+                  <%= image_tag 'logo_home01.svg' %>
+                </div>
+                <p>
+                  今、一番美味しいお店を決定する表彰イベント「The Tabelog Award 2022」ついに発表！
+                </p>
+              </div>
+              <% end %>
+              <%= link_to '#', class: 'contents' do %>
+              <div class="home__main-contents-item flex">
+                <div>
+                  <%= image_tag 'logo_home02.svg' %>
+                </div>
+                <p>
+                  うまいもの、いま食べるなら、このお店。カテゴリ別のランキングTOP100店舗を発表。
+                </p>
+              </div>
+              <% end %>
+              <%= link_to '#', class: 'contents' do %>
+              <div class="home__main-contents-item flex">
+                <div>
+                  <%= image_tag 'logo_home03.svg' %>
+                </div>
+                <p>
+                  いますぐ行ってみたいお店、食べたいひと皿を、編集部渾身の記事でご紹介！
+                </p>
+              </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
