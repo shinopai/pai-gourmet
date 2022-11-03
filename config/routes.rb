@@ -30,4 +30,10 @@ Rails.application.routes.draw do
 
   # keep restaurant
   post '/users/:id/restaurants/:restaurant_id/keep', to: 'keeps#keep_restaurant', as: :keep_restaurant
+
+  # remove keep restaurant
+  delete '/users/:id/restaurants/:restaurant_id/remove', to: 'keeps#remove_keep_restaurant', as: :remove_keep_restaurant
+
+  # keep restaurant by user
+  get 'users/:id/keeps', to: 'users#show_all_keeps', as: :show_all_keeps
 end

@@ -13,6 +13,15 @@
           <% end %>
         </div>
         <div class="list__mass">
+          <% if check_keep_restaurant(@current_user, restaurant.id) %>
+          <%= button_to remove_keep_restaurant_path(@current_user.id, restaurant.id), method: :delete, class: 'contents' do %>
+          <span title="<%= check_keep_restaurant(@current_user, restaurant.id) ? 'このお店の保存を外す' : 'このお店を保存する' %>" class="<%= 'done' if check_keep_restaurant(@current_user, restaurant.id) %>"><i class="far fa-bookmark fa-border"></i></span>
+          <% end %>
+          <% else %>
+          <%= button_to keep_restaurant_path(@current_user.id, restaurant.id), method: :post, class: 'contents' do %>
+          <span title="<%= check_keep_restaurant(@current_user, restaurant.id) ? 'このお店の保存を外す' : 'このお店を保存する' %>" class="<%= 'done' if check_keep_restaurant(@current_user, restaurant.id) %>"><i class="far fa-bookmark fa-border"></i></span>
+          <% end %>
+          <% end %>
           <h3><%= restaurant.name %></h3>
           <p>
             <%= restaurant.area.name %>&nbsp;/&nbsp;<%= restaurant.genre.name %>

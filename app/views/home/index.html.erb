@@ -20,8 +20,8 @@
           <li>
             <%= link_to "行ったお店", '#' %>
           </li>
-          <li>
-            <%= link_to "保存済み", '#' %>
+          <li class="has-before">
+            <%= link_to "保存済み", show_all_keeps_path(@current_user) %>
           </li>
           <li>
             <%= link_to "ログアウト", destroy_user_session_path %>

@@ -1,8 +1,8 @@
-<%= render partial: 'shared/page_title', locals: { page_title: '全国のお店' } %>
+<%= render partial: 'shared/page_title', locals: { page_title: "#{@current_user.name}さんの保存済のお店" } %>
 
 <div class="list">
   <div class="wrap-sm">
-    <h2 class="list__heading">全国のお店</h2>
+    <h2 class="list__heading">保存済みのお店</h2>
     <div class="list__contents">
       <% @restaurants.each do |restaurant| %>
       <%= link_to show_restaurant_path(restaurant), class: 'contents', target: :blank do %>

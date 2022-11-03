@@ -35,11 +35,18 @@
 #   )
 # end
 
-200.times do
-User.create!(
-  name: Faker::Name.name,
-  email: Faker::Internet.email,
-  password: 'password',
-  profile_image:File.open("./public/images/user_image.png")
-)
+# 200.times do
+# User.create!(
+#   name: Faker::Name.name,
+#   email: Faker::Internet.email,
+#   password: 'password',
+#   profile_image:File.open("./public/images/user_image.png")
+# )
+# end
+
+3000.times do
+  Keep.create!(
+    user_id: rand(1..User.count),
+    restaurant_id: rand(1..Restaurant.count)
+  )
 end

@@ -17,6 +17,21 @@
           a {
             color: #fff;
             @include fs-13;
+            &::hover {
+              text-decoration: underline;
+            }
+          }
+          &.has-before {
+            &::before {
+              font-family: "Font Awesome 5 Free";
+              font-weight: 900;
+              content: "\f02e";
+              color: #f0d019;
+              position: absolute;
+              top: 0;
+              left: -11px;
+              @include fs-12;
+            }
           }
         }
       }
@@ -213,6 +228,9 @@
             top: 0;
             left: 0;
             background-color: rgba(0, 0, 0, 0.3);
+          }
+          &:hover {
+            opacity: 0.8;
           }
         }
       }
